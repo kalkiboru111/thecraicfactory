@@ -1,0 +1,1 @@
+web: gunicorn thecraicfactory.wsgi:application
