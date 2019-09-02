@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['017eb3b7fb9340348cc2b457f7e1f4f6.vfs.cloud9.eu-west-1.amazonaws.com', 'thecraicfactory.herokuapp.com']
+ALLOWED_HOSTS = ['017eb3b7fb9340348cc2b457f7e1f4f6.vfs.cloud9.eu-west-1.amazonaws.com', 'https://thecraicfactory.herokuapp.com/']
 
 
 # Application definition
