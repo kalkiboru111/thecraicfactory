@@ -22,6 +22,7 @@ from accounts import urls as urls_accounts
 from posts import urls as urls_posts
 from posts.views import get_posts
 from django.views import static
+from search import urls as urls_search
 
 
 urlpatterns = [
@@ -29,7 +30,7 @@ urlpatterns = [
     url(r'^$', get_posts, name='index'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^posts/', include(urls_posts)),
-    #url(r'^search/', include(urls_search)),
+    url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]
 
