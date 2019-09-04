@@ -23,6 +23,7 @@ from posts import urls as urls_posts
 from posts.views import get_posts
 from django.views import static
 from search import urls as urls_search
+from checkout import urls as urls_checkout
 
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^accounts/', include(urls_accounts)),
     url(r'^posts/', include(urls_posts)),
     url(r'^search/', include(urls_search)),
+    url(r'^checkout/', include(urls_checkout)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]
 
