@@ -19,17 +19,17 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 from accounts import urls as urls_accounts
-from posts import urls as urls_products
+from posts import urls as urls_posts
 from posts.views import get_posts
 from django.views import static
 
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', RedirectView.as_view(url="posts/")),
-    url(r'^posts/', include('posts.urls')),
-    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
+    url(r'^$', get_posts, name='index'),
     url(r'^accounts/', include(urls_accounts)),
+    url(r'^posts/', include(urls_posts)),
+    #url(r'^search/', include(urls_search)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
 ]
 

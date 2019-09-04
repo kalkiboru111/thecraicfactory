@@ -21,7 +21,16 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, 'postdetail.html', {'post': post})
-    
+
+def add_vote(request, pk):
+    '''
+    Creat view that returns a single post object based on the post ID and enables a user to vote for it... otherwise return a 404.
+    '''
+    post = get_object_or_404(Post, pk=pk)
+    post.votes += 1
+    post.save()
+    return render(request, 'postdetail.html', {'post': post})
+
 def create_or_edit_post(request, pk=None):
     ''' 
     Create a vie w that allows us to create or edit a post depending if the post ID is null or not. 
