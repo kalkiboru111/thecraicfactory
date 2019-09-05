@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% for post in posts %}
+{% extends 'base.html' %} 
+
+{% block content %} {% for post in posts %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
         <a class="story-img" href="#">
@@ -20,6 +22,7 @@
                 <p><span><form style="font-size: 2em;" method="post" action="{% url 'add_vote' post.id %}">
                         {% csrf_token %}
                       <i onclick="myFunction(this)" action="{% url 'add_vote' post.id %}" class="fa fa-thumbs-up fa-2x"></i>
+                      <p><div id="myDIV"></div></p>
                     </form>
                     </span> 
                 </p>
