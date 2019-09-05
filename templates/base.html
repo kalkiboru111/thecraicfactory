@@ -33,7 +33,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                     <li><div class="display">
-                        <form action="{% url 'search' %}" method="get" default="craic dealer">
+                        <form action="{% url 'search' %}" method="get">
                             <input type="text" name="q" />
                             <button type="submit">Search</button>
                         </form>
