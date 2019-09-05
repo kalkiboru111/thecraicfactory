@@ -6,5 +6,4 @@ class PostTest(TestCase):
     '''
     This defines the tests that posts must pass. These tests will be run against the Post models.
     '''
-    def test_unicode(self):
-        
+   
