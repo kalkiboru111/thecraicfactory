@@ -17,16 +17,11 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
-                <p>
-                    <form method="post" action="{% url 'add_vote' post.id %}">
+                <p><span><form style="font-size: 2em;" method="post" action="{% url 'add_vote' post.id %}">
                         {% csrf_token %}
-                        <div class="input-group">
-                            <input name="quantity" type="number" min="0" max="1" class="form-control" placeholder="Quantity">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="submit">Add</button>
-                            </span>
-                        </div>
+                      <i onclick="myFunction(this)" action="{% url 'add_vote' post.id %}" class="fa fa-thumbs-up fa-2x"></i>
                     </form>
+                    </span> 
                 </p>
             </div>
         </div>
