@@ -1,1 +1,6 @@
+__pycahce__
+.~c9*
 env.py
+*.png
+static/
+media/
