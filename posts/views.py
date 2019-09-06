@@ -65,7 +65,5 @@ def add_vote(request, pk):
 
 
 
-
-
 # # Returns all instances voted by user
 # Review.votes.all(user_id)

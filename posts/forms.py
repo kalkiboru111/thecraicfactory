@@ -7,6 +7,6 @@ class BlogPostForm(forms.ModelForm):
     '''
     class Meta:
         model = Post
-        fields = ('title', 'content', 'published_date', 'image', 'tag')
+        fields = ('title', 'content', 'published_date', 'image', 'tag', 'votes')
         
     
