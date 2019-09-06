@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Post, Votes
+from .models import Post
 from .forms import BlogPostForm
 from django.contrib.auth.models import User
 
@@ -50,14 +50,18 @@ def add_vote(request, pk):
     '''
     post = get_object_or_404(Post, pk=pk)
     user = User.objects.get(username=request.user)
-    upvote = Votes.objects.filter(vote_issue=post)
-    for vote in upvote:
-        if str(vote) == str(user):
-            voting = get_object_or_404(Votes, vote_issue=post, user=request.user)
-            post.user_votes += 1
-            post.save()
-            post.vote_issue = post
-            post.user = request.user
-            post.save()
+    upvote = post.votes.up(user)
+    downvote = post.votes.down(user)
+    devote = post.votes.delete(user)
+    check = post.votes.exists(user)
+    tally = post.votes.count()
+    reveal = post.votes.user_ids()
+    
+    return redirect(request, 'post_detail.html', post.pk)
 
-    return redirect(post_detail, post.pk)
+
+
+
+
+# # Returns all instances voted by user
+# Review.votes.all(user_id)

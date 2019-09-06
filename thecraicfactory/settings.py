@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'checkout',
     'stripe',
     'storages',
+    'vote',
 ]
 
 MIDDLEWARE = [
