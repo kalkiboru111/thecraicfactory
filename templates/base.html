@@ -75,6 +75,7 @@
 <script type="text/javascript">
     function myFunction(x) {
         x.classList.toggle("fa-thumbs-down");
+        add_vote();
         var y = document.getElementById("myDIV");
         if (y.innerHTML === "") {
             x.innerHTML = "Craic!";

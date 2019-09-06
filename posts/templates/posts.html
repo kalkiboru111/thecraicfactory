@@ -19,9 +19,9 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
-                <p><span><form style="font-size: 2em;" method="post" action="{% url 'add_vote' post.id %}">
+                <p><span><form action="{% url 'add_vote' post.id %}" style="font-size: 2em;" method="post" type="submit">
                         {% csrf_token %}
-                      <i onclick="myFunction(this)" action="{% url 'add_vote' post.id %}" class="fa fa-thumbs-up fa-2x"></i>
+                      <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x"></i>
                       <p><div id="myDIV"></div></p>
                     </form>
                     </span> 

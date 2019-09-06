@@ -50,13 +50,18 @@ def add_vote(request, pk):
     '''
     post = get_object_or_404(Post, pk=pk) 
     user = request.user
-    post.votes.up(user)
-    post.votes.down(user)
-    post.votes.delete(user)
-    post.votes.exists(user)
-    post.votes.count()
-    post.votes.user_ids()
-    post.votes.all(user)
-    post.save()
-    return render(request, 'postdetail.html', {'post': post})
+    postVotes = int(post.votes)
+    postVotes.up(user)
+    # post.votes.down(user)
+    # post.votes.delete(user)
+    # post.votes.exists(user)
+    # post.votes.count()
+    # post.votes.user()
+    # post.votes.all(user)
+    # post.save()
+    return render(request, {'post': post})
+    
+    
+    
+   
 
