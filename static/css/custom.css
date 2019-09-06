@@ -68,7 +68,8 @@ a, a:hover {
 }
 
 .panel {
-    border-color: transparent;
+    border-color: black;
+    border-width: thin;
     border-radius: 0;
 }
 

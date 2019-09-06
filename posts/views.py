@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Post
+from .models import Post, Votes
 from .forms import BlogPostForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -24,15 +25,6 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, 'postdetail.html', {'post': post})
-
-@login_required
-def add_vote(request, pk):
-    '''
-    Creat view that returns a single post object based on the post ID and enables a user to vote for it... otherwise return a 404.
-    '''
-    post = get_object_or_404(Post, pk=pk)
-    post.save()
-    return render(request, 'posts.html', {'post': post})
     
 @login_required
 def create_or_edit_post(request, pk=None):
@@ -50,3 +42,22 @@ def create_or_edit_post(request, pk=None):
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'postform.html', {'form': form}) 
+
+@login_required
+def add_vote(request, pk):
+    '''
+    Creat view that returns a single post object based on the post ID and enables a user to vote for it... otherwise return a 404.
+    '''
+    post = get_object_or_404(Post, pk=pk)
+    user = User.objects.get(username=request.user)
+    upvote = Votes.objects.filter(vote_issue=post)
+    for vote in upvote:
+        if str(vote) == str(user):
+            voting = get_object_or_404(Votes, vote_issue=post, user=request.user)
+            post.user_votes += 1
+            post.save()
+            post.vote_issue = post
+            post.user = request.user
+            post.save()
+
+    return redirect(post_detail, post.pk)
