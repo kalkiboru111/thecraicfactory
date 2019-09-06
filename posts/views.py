@@ -48,16 +48,20 @@ def add_vote(request, pk):
     '''
     Creat view that returns a single post object based on the post ID and enables a user to vote for it... otherwise return a 404.
     '''
-    post = get_object_or_404(Post, pk=pk)
-    user = User.objects.get(username=request.user)
-    upvote = post.votes.up(user)
-    downvote = post.votes.down(user)
-    devote = post.votes.delete(user)
-    check = post.votes.exists(user)
-    tally = post.votes.count()
-    reveal = post.votes.user_ids()
-    
-    return redirect(request, 'post_detail.html', post.pk)
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    if request.method == "POST": 
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            instance=form.save(commit=False)
+            instance.user=request.user
+            instance.upvotes=post.votes.up.user
+            instance.downvotes=post.votes.down.user
+            instance.devote=post.votes.delete.user
+            instance.votes = post.votes.count()
+            post=form.save()
+        else:
+            form = BlogPostForm(instance=post)
+        return redirect(post_detail, post.pk)
 
 
 
