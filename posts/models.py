@@ -1,15 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-	
-class Vote(models.Model):
-	vote_name = models.fields.CharField(max_length=128)
-
-class UserVotes(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    vote = models.ForeignKey(Vote, on_delete=models.CASCADE)
-
-# Model for Posts here.
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -24,6 +15,22 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Poll(models.Model):
+    question = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    is_active = models.BooleanField(default=True)
+    # The rest of code...
+
+class Choice(models.Model):
+    poll = models.ForeignKey(Poll)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    # The rest of code...
+
+class Voter(models.Model):
+    user = models.ForeignKey(User)
+    poll = models.ForeignKey(Poll)
 
 
 
