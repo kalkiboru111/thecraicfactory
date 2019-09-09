@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .models import Post
+from .models import Post, Vote, UserVotes
 from .forms import BlogPostForm
 from django.contrib.auth.models import User
 
@@ -43,24 +43,38 @@ def create_or_edit_post(request, pk=None):
         form = BlogPostForm(instance=post)
     return render(request, 'postform.html', {'form': form}) 
 
-@login_required
-def add_vote(request, pk):
-    '''
-    Creat view that returns a single post object based on the post ID and enables a user to vote for it... otherwise return a 404.
-    '''
-    post = get_object_or_404(Post, pk=pk) 
-    user = request.user
-    postVotes = int(post.votes)
-    postVotes.up(user)
-    # post.votes.down(user)
-    # post.votes.delete(user)
-    # post.votes.exists(user)
-    # post.votes.count()
-    # post.votes.user()
-    # post.votes.all(user)
-    # post.save()
-    return render(request, {'post': post})
-    
+
+# /vote/up
+def vote_up(user_id, vote_id, pk):
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    user = User.objects.get(pk=user_id)
+    vote = Vote.objects.get(pk=vote_id)
+    rows = UserVotes.objects.filter(user=user, vote=vote)
+    if rows.count() == 0:
+	    user_vote = UserVotes(user=user, vote=vote)
+	    user_vote.save()
+	    return 'ok'
+    else:
+	    return 'fail'
+ 
+# /vote/count
+def vote_count(vote_id, pk):
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    vote = Vote.objects.get(pk=vote_id)
+    rows = UserVotes.objects.filter(vote=vote)
+    return rows.count()
+	
+# /vote/down
+def vote_down(user_id, vote_id, pk):
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    user = User.objects.get(pk=user_id)
+    vote = Vote.objects.get(pk=vote_id)
+    rows = UserVotes.objects.filter(user=user, vote=vote)
+    if rows.count() > 0:
+        rows.delete()
+        return 'ok'
+    else:
+        return 'fail'
     
     
    
