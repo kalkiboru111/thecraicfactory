@@ -45,11 +45,9 @@ def create_or_edit_post(request, pk=None):
 
 
 @login_required
-def vote(request, poll_id, pk):
-    # Some code...
-    # And here is the checking happens.
-    if Voter.objects.filter(poll_id=poll_id, user_id=request.user.id).exists():
-        return render(request, 'polls/detail.html', {
+def vote(request, pk):
+    if Voter.objects.filter(user_id=request.user.id).exists():
+        return render(request, 'postdetail.html', {
         'poll': p,
         'error_message': "Sorry, but you have already voted."
         })
@@ -57,7 +55,7 @@ def vote(request, poll_id, pk):
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the poll voting form.
-        return render(request, 'polls/detail.html', {
+        return render(request, 'postdetail.html', {
         'poll': p,
         'error_message': "You didn't select a choice."
         })
@@ -66,6 +64,6 @@ def vote(request, poll_id, pk):
         selected_choice.save()
         v = Voter(user=request.user, poll=p)
         v.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
+        return HttpResponseRedirect(reverse('posts:results', args=(p.id,)))
    
 

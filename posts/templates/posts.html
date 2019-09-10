@@ -26,6 +26,17 @@
                     </form>
                     </span> 
                 </p>
+                <p><span><form method="post" action="{% url 'add_to_cart' post.id %}" style="font-size: 2em;" type="submit">
+                        {% csrf_token %}
+                      <div class="input-group">
+                          <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity"/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-success" type="submit">Add</button>
+                          </span>
+                      </div>
+                    </form>
+                    </span> 
+                </p>
             </div>
         </div>
     </div>

@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', post_detail, name='post_detail'),
     url(r'^new/$', create_or_edit_post, name='new_post'),
     url(r'^(?P<pk>\d+)/edit/$', create_or_edit_post, name='edit_post'),
-    url(r'^(?P<pk>\d+)/vote/(?P<poll_id>\d+)$', vote, name='vote'),
+    url(r'^(?P<pk>\d+)/vote/$', vote, name='vote'),
 ]
