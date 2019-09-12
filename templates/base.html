@@ -46,6 +46,14 @@
                     <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Register</a></li>
                     <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Log In</a></li>
                     {% endif %}
+                    <li>
+                        <a href="{% url 'view_cart' %}">
+                            <i class="fa-shopping-cart"></i>Cart
+                            {% if product_count > 0 %}
+                            <label class="badge badge-warning">{{ product_count }}</label>
+                            {% endif %}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -75,7 +83,7 @@
 <script type="text/javascript">
     function myFunction(x) {
         x.classList.toggle("fa-thumbs-down");
-        add_vote();
+        
         var y = document.getElementById("myDIV");
         if (y.innerHTML === "") {
             x.innerHTML = "Craic!";

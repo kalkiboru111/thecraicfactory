@@ -19,19 +19,19 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
-                <p><span><form action="{% url 'vote' post.id %}" style="font-size: 2em;" method="post" type="submit">
+                <p><span>
+                    <form method="post" action="{% url 'vote' post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
-                      <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x"></i>
-                      <p><div id="myDIV"></div></p>
+                      <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x" type="submit"></button>
                     </form>
-                    </span> 
-                </p>
-                <p><span><form method="post" action="{% url 'add_to_cart' post.id %}" style="font-size: 2em;" type="submit">
+                </p></span> 
+                <p><span>
+                    <form method="post" action="{% url 'add_to_cart' post.id %}" style="font-size: 2em;">
                         {% csrf_token %}
                       <div class="input-group">
-                          <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity"/>
+                          <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity"/ price="10">
                           <span class="input-group-btn">
-                              <button class="btn btn-success" type="submit">Add</button>
+                              <button class="btn btn-success" >Buy Craic</button>
                           </span>
                       </div>
                     </form>
