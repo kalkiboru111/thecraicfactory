@@ -3,18 +3,28 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Poll(models.Model):
-    question = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
-    is_active = models.BooleanField(default=True)
-    # The rest of code...
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    url = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+    votes_total = models.IntegerField(default=1)
+    image = models.ImageField(upload_to='image/')
+    icon = models.ImageField(upload_to='image/')
+    body = models.TextField(max_length=500)
+    hunter = models.ForeignKey(User,on_delete=models.CASCADE)
 
-class Choice(models.Model):
-    poll = models.ForeignKey(Poll)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-    # The rest of code...
+    def __str__(self):
+        return self.title
 
-class Voter(models.Model):
-    user = models.ForeignKey(User)
-    poll = models.ForeignKey(Poll)
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%b %e %Y')
+
+    def summary(self):
+        return self.body[:100]
+
+class Vote(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('post', 'user')

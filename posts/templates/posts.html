@@ -20,7 +20,7 @@
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
                 <p><span>
-                    <form method="post" action="{% url 'vote' post.id %}" style="font-size: 2em;" >
+                    <form method="post" action="{% url 'upvote' post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
                       <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x" type="submit"></button>
                     </form>

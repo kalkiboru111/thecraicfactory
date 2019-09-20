@@ -11,7 +11,7 @@ class Post(models.Model):
     tag = models.CharField(max_length=30, blank=True, null=True)
     friend_tag = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to="img", blank=True, null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts_created')
     price = 1
 
     def __unicode__(self):

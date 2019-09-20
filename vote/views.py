@@ -1,27 +1,20 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Poll, Choice, Voter
+from .models import Vote, Post
 from django.contrib.auth.models import User
+from django.db import IntegrityError
 
 # Create your views here.
 @login_required
-def vote(request, pk):
-    if Voter.objects.filter(user_id=request.user.id).exists():
-        return render(request, 'postdetail.html', {
-        'poll': p,
-        'error_message': "Sorry, but you have already voted."
-        })
-    try:
-        selected_choice = p.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the poll voting form.
-        return render(request, 'postdetail.html', {
-        'poll': p,
-        'error_message': "You didn't select a choice."
-        })
-    else:
-        selected_choice.votes +=1
-        selected_choice.save()
-        v = Voter(user=request.user, poll=p)
-        v.save()
-        return HttpResponseRedirect(reverse('posts:results', args=(p.id)))
+def upvote(request, pk):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, pk)
+        post.votes_total += 1
+        # changes
+        try:
+            Vote.objects.create(post=post, user=request.user)
+            post.save()
+        except IntegrityError:  # if "unique_together" fails, it will raise an  "IntegrityError" exception
+            return HttpResponse("vote not casted")
+
+        return redirect('/posts/' + str(post.id))
