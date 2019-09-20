@@ -25,7 +25,7 @@ from django.views import static
 from search import urls as urls_search
 from checkout import urls as urls_checkout
 from cart import urls as urls_cart
-from vote import urls as urls_upvote
+from upvote import urls as urls_upvote
 
 
 urlpatterns = [

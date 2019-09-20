@@ -1,6 +1,7 @@
-from django.conf.urls import url
-from .views import upvote
+from django.conf.urls import url, include
+from vote import urls as urls_upvote
 
 urlpatterns = [
-    url(r'^upvote/(?P<pk>\d+)', upvote, name='upvote'),
-]
+    url(r'^upvote/', include(urls_upvote)
+    ]
+
