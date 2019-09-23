@@ -17,6 +17,7 @@ class UserRegistrationForm(UserCreationForm):
     password2 = forms.CharField(
     label="Password Confirmation", 
     widget= forms.PasswordInput)
+   
     
     class Meta:
         model = User
@@ -40,4 +41,3 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Passwords must match")
         
         return password2
-    

@@ -26,6 +26,8 @@ from search import urls as urls_search
 from checkout import urls as urls_checkout
 from cart import urls as urls_cart
 from vote import urls as urls_upvote
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -40,3 +42,6 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
 
+# Ensures URL pattern is only added when in debug mode. 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
