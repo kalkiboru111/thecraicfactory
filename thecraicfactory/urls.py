@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^search/', include(urls_search)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^upvote/', include(urls_upvote)),
-    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
+    url(r'media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT }),
 ]
 
 # Ensures URL pattern is only added when in debug mode. 

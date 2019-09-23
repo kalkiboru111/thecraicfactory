@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 # REturn the index.html file
 def index(request):
@@ -63,4 +64,4 @@ def register(request):
 def user_profile(request):
     '''The user profile page'''
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user})
+    return render(request, 'profile.html', {'profile': user, 'profile_image': profile_image})
