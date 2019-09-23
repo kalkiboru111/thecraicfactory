@@ -8,7 +8,7 @@ from django.db import IntegrityError
 @login_required
 def upvote(request, pk):
     if request.method == 'POST':
-        post = get_object_or_404(Post, pk)
+        post = get_object_or_404(Post, pk=pk)
         post.votes_total += 1
         # changes
         try:
