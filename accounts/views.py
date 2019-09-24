@@ -63,5 +63,8 @@ def register(request):
         
 def user_profile(request):
     '''The user profile page'''
+    # Gettting user object
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user, 'profile_image': profile_image})
+    # Gettting profile object through foreign key
+    profile = User.objects.get(email=request.user.email)
+    return render(request, 'profile.html', {'profile': profile})
