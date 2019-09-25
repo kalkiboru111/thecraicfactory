@@ -25,10 +25,19 @@
                       <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x" type="submit"></button>
                     </form>
                 </p></span> 
-                <p><span>
-                    <form method="post" action="{% url 'add_to_cart' post.id %}" style="font-size: 2em;">
+                <p>
+                    <span>
+                    <form method="post" action="{% url 'add_to_cart' post.id %}" value="" style="font-size: 2em;">
+                        <h5>Craic Counter</h5>
                         {% csrf_token %}
                       <div class="input-group">
+                          <div class="qty mt-5">
+                            <span class="minus bg-dark">-</span>
+                            <input type="number" class="count" name="qty" value="1">
+                            <span class="plus bg-dark">+</span>
+                        </div>
+                        </div>
+                        <div>
                           <span class="input-group-btn">
                               <button class="btn btn-success" >Buy Craic</button>
                           </span>

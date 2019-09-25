@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/custom.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% block head_js %} {% endblock head_js %}
 </head>
 
@@ -70,6 +71,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel-group">
+                <div class="panel-heading">{{post.title}}</div>
                 <div class="panel panel-default">
                     <div class="panel-body">
                         {% block content %} {% endblock %}
@@ -80,8 +82,19 @@
     </div>
 </body>
 
-<script type="text/javascript">
-    // on click Denzel Washington 
+<!-- JS for Craic Counter -->
+<script>
+    	$(document).ready(function(){
+		    $('.count').prop('disabled', true);
+   			$(document).on('click','.plus',function(){
+				$('.count').val(parseInt($('.count').val()) + 1 );
+    		});
+        	$(document).on('click','.minus',function(){
+    			$('.count').val(parseInt($('.count').val()) - 1 );
+    				if ($('.count').val() == 0) {
+						$('.count').val(1);
+					}
+    	    	});
+ 		});
 </script>
-
 </html>
