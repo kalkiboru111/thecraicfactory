@@ -52,7 +52,7 @@ input{
     border: 0;
     width: 2%;
 }
-nput::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -134,7 +134,13 @@ a, a:hover {
 
 .panel {
     border-color: black;
-    border-width: thin;
+    border-width: thick;
+    border-radius: 0;
+}
+
+.panel-group{
+    border-color: black;
+    border-width: thick;
     border-radius: 0;
 }
 
@@ -199,3 +205,4 @@ a, a:hover {
     margin-top: auto;
     padding-top: 15px;
 }
+

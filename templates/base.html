@@ -17,7 +17,7 @@
 <body>
     <!--Fixed masthead -->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container center">
+        <div class="container" id="navbar-container">
             <div class="navbar-header masthead">
                 <a href="{% url 'get_posts' %}">
                     <h1 align="center">The Craic Factory</h1>
@@ -72,8 +72,10 @@
         <div class="col-xs-12">
             <div class="panel-group">
                 <div class="panel panel-default">
-                    <div class="panel-body">
-                        {% block content %} {% endblock %}
+                    <div class="wrapper col-xs-push-3 col-xs-12">
+                        <div class="panel-body">
+                            {% block content %} {% endblock %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,17 +85,18 @@
 
 <!-- JS for Craic Counter -->
 <script>
-    	$(document).ready(function(){
-		    $('.count').prop('disabled', true);
-   			$(document).on('click','.plus',function(){
-				$('.count').val(parseInt($('.count').val()) + 1 );
-    		});
-        	$(document).on('click','.minus',function(){
-    			$('.count').val(parseInt($('.count').val()) - 1 );
-    				if ($('.count').val() == 0) {
-						$('.count').val(1);
-					}
-    	    	});
- 		});
+    $(document).ready(function() {
+        $('.count').prop('disabled', true);
+        $(document).on('click', '.plus', function() {
+            $('.count').val(parseInt($('.count').val()) + 1);
+        });
+        $(document).on('click', '.minus', function() {
+            $('.count').val(parseInt($('.count').val()) - 1);
+            if ($('.count').val() == 0) {
+                $('.count').val(1);
+            }
+        });
+    });
 </script>
+
 </html>
