@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %} 
+{% extends 'base.html' %} {% block content %}
 <h2>The Craic Pipe
     <i class="fas fa-arrow-circle-down"></i>
     <i class="fas fa-arrow-circle-down"></i>
@@ -11,10 +10,17 @@
 {% for post in posts %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
+        {% if post.image %}
         <a class="story-img">
-                    <img src="{{MEDIA_URL}}{{ profile.profile_image}}" class="img-circle">
-                </a>
+            <img src="{{MEDIA_URL}}{{ post.image.url }}" class="img-circle">
+        </a> 
+        {% else %}
+        <a class="story-img">
+            <img src="{{MEDIA_URL}}/media/gallery/profile.jpg" class="img-circle">
+        </a> 
+        {% endif %}
         <p><span class="boldtext">Author:</span> {{ post.author }} </p>
+
     </div>
     <div class="col-md-10 col-sm-9">
         <h3>{{ post.title }}</h3>
@@ -27,6 +33,11 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes_total}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
+                {% if post.image %}
+                <p><span class="boldtext"> Image:</span>
+                    <img src="{{MEDIA_URL}}{{ post.image.url }}" alt="{{ post.title }}">
+                </p>
+                {% endif %}
                 <p><span>
                     <form method="post" action="{% url 'upvote' post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
@@ -35,7 +46,7 @@
                 </p></span>
                     <p>
                         <span>
-                    <form method="post" action="{% url 'add_to_cart' post.id %}" value="" style="font-size: 2em;">
+                    <form method="post" action="{% url 'add_to_cart' post.id %}" value='quantity' style="font-size: 2em;">
                         <h5>Craic Counter</h5>
                         {% csrf_token %}
                       <div class="input-group">

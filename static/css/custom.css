@@ -67,9 +67,9 @@ input:disabled{
     width: auto;
 }
 
-body {
+.body {
     font-family: Arial;
-    padding-top: 100px;
+    
 }
 
 footer {

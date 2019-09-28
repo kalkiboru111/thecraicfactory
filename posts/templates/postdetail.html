@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm-10 col-md-9">
             {% if post.image %}
-                <img class="img-blogpost" src="/media/{{ post.image }}">
+                <img class="img-blogpost" src="{{MEDIA_URL}}{{ post.image.url }}">
             {% endif %}
             <h3>{{ post.title }}</h3>
             <div class="row">

@@ -8,12 +8,11 @@
 
 <div class="content-section">
   <div class="media">
-    <img class="rounded-circle account-img" src= "{{MEDIA_URL}}{{ profile_image }}">
+    <img class="rounded-circle account-img" src= "{{MEDIA_URL}}{{ user.profile_image }}">
     <div class="media-body">
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary"> {{ user.email }} </p>
       <p class="text-secondary"> {{ user.bio }} </p>
-      <p class="text-secondary"> {{ user.profile_image }} </p>
     </div>
   </div>
   <!-- FORM HERE -->

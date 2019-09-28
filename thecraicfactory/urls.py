@@ -28,6 +28,7 @@ from cart import urls as urls_cart
 from vote import urls as urls_upvote
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -43,5 +44,5 @@ urlpatterns = [
 ]
 
 # Ensures URL pattern is only added when in debug mode. 
-#if settings.DEBUG:
-   # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
