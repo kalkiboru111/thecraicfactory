@@ -15,7 +15,7 @@ def get_posts(request):
     posts = Post.objects.filter(published_date__lte=timezone.now
     ()).order_by('-published_date')
     image = Post.image
-    return render(request, 'posts.html', {'posts': posts, 'image': image})
+    return render(request, 'posts.html', {'posts': posts})
 
 @login_required
 def post_detail(request, pk):
@@ -25,7 +25,7 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.views += 1
     post.save()
-    return render(request, 'postdetail.html', {'post': post, 'image': image})
+    return render(request, 'postdetail.html', {'post': post})
     
 @login_required
 def create_or_edit_post(request, pk=None):
