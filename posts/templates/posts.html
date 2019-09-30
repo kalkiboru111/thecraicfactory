@@ -12,11 +12,11 @@
     <div class="col-md-2 col-sm-3 text-center">
         {% if post.image %}
         <a class="story-img">
-            <img src="{{MEDIA_URL}}{{ post.image.url }}" class="img-circle">
+            <img src="{{MEDIA_URL}}{{ post.post_image.url }}" class="img-circle">
         </a> 
         {% else %}
         <a class="story-img">
-            <img src="{{MEDIA_URL}}/post_images/profile.jpg" class="img-circle">
+            <img src="{{MEDIA_URL}}{{ post.post_image.url }}" class="img-circle">
         </a> 
         {% endif %}
         <p><span class="boldtext">Author:</span> {{ post.author }} </p>
@@ -35,7 +35,7 @@
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
                 {% if post.image %}
                 <p><span class="boldtext"> Image:</span>
-                    <img src="{{MEDIA_URL}}{{ post.image.url }}" alt="{{ post.title }}">
+                    <img src="{{MEDIA_URL}}{{ post.image }}" alt="{{ post.title }}">
                 </p>
                 {% endif %}
                 <p><span>
