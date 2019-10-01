@@ -17,10 +17,10 @@
 <body>
     <!--Fixed masthead -->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container" id="navbar-container">
+        <div class="container center">
             <div class="navbar-header masthead">
                 <a href="{% url 'get_posts' %}">
-                    <h3>The Craic Factory</h3>
+                    <h1 align="center">The Craic Factory</h1>
                 </a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
@@ -72,7 +72,8 @@
         <div class="col-xs-12">
             <div class="panel-group">
                 <div class="panel panel-default">
-                    <div class="wrapper">
+                    <div class="wrapper col-xs-push-2 col-xs-12">
+                        <span>
                         <div class="panel-body">
                             {% block content %} {% endblock %}
                         </div>

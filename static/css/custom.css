@@ -52,7 +52,7 @@ input{
     border: 0;
     width: 2%;
 }
-input::-webkit-outer-spin-button,
+nput::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -67,9 +67,9 @@ input:disabled{
     width: auto;
 }
 
-.body {
+body {
     font-family: Arial;
-    
+    padding-top: 150px;
 }
 
 footer {
