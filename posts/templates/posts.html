@@ -10,17 +10,10 @@
 {% for post in posts %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
-        {% if post.image %}
         <a class="story-img">
-            <img src="{{MEDIA_URL}}{{ post.image }}" class="img-circle">
+            <img src="{{MEDIA_URL}}{{ user.profile_image.url }}" class="img-circle">
         </a> 
-        {% else %}
-        <a class="story-img">
-            <img src="{{MEDIA_URL}}{{ post.image }}" class="img-circle">
-        </a> 
-        {% endif %}
         <p><span class="boldtext">Author:</span> {{ post.author }} </p>
-
     </div>
     <div class="col-md-10 col-sm-9">
         <h3>{{ post.title }}</h3>
