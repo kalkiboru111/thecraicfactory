@@ -35,18 +35,6 @@
                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Log Out</a></li>
                     <li><a href="{% url 'new_post' %}"><i class="fa fa-plus-circle" aria-hidden="true"></i>New Post</a></li>
                     <li>
-                        <div class="display" id="search-bar">
-                            <form action="{% url 'search' %}" method="get">
-                                <input type="text" name="q" />
-                                <button type="submit">Search</button>
-                            </form>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Register</a></li>
-                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Log In</a></li>
-                    {% endif %}
-                    <li>
                         <a href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>Cart
                             {% if product_count > 0 %}
@@ -54,6 +42,18 @@
                             {% endif %}
                         </a>
                     </li>
+                    <li>
+                        <div class="display" id="search-bar">
+                            <form action="{% url 'search' %}" method="get" id="craic-search">
+                                <input type="text" name="q" />
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i>Register</a></li>
+                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i>Log In</a></li>
+                    {% endif %}
                 </ul>
             </div>
        
