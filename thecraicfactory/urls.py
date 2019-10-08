@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
 from django.views.static import serve
-from .settings import MEDIA_ROOT
+#from .settings import MEDIA_ROOT
 from accounts import urls as urls_accounts
 from posts import urls as urls_posts
 from posts.views import get_posts
