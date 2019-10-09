@@ -36,7 +36,7 @@ from products.views import all_products
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', get_posts, name='index'),
-    url(r'^products/', include(urls_products)),
+    url(r'^products/', include(urls_products), name='products'),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^posts/', include(urls_posts)),
     url(r'^cart/', include(urls_cart)),

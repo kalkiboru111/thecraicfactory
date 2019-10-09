@@ -1,10 +1,9 @@
-{% extends 'base.html' %} {% block content %}
-{% for post in posts %}
+{% extends 'base.html' %} {% block content %} {% for post in posts %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
         <a class="story-img">
             <img src="{{MEDIA_URL}}{{ user.profile_image.url }}" class="img-circle">
-        </a> 
+        </a>
         <p><span class="boldtext">Author:</span> {{ post.author }} </p>
     </div>
     <div class="col-md-10 col-sm-9">
@@ -18,37 +17,21 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes_total}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
-                <p><span class="boldtext"> Image:</span> 
-                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ post.image }}')" alt="{{ post.title }}"></div>
+                <p><span class="boldtext"> Image:</span>
+                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ post.image }}')" alt="{{ post.title }}"></div>
                 </p>
                 <p><span>
                     <form method="post" action="{% url 'upvote' post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
                       <button onclick="myFunction(x)" class="fa fa-thumbs-up fa-2x" type="submit"></button>
                     </form>
-                </p></span>
-                    <p>
-                        <span>
-                    <form method="post" action="{% url 'add_to_cart' post.id %}" value='quantity' style="font-size: 2em;">
-                        {% csrf_token %}
-                      <div class="input-group">
-                          <div class="qty mt-5">
-                            <span class="minus bg-dark">-</span>
-                        <input type="number" class="count" name="qty" value="1">
-                    <span class="plus bg-dark">+</span>
+                </p>
+                <p>
+                    <a href="{% url 'products' %}" class="btn btn-success">Buy {{ post.author }} Craic</a>
+                </p>
             </div>
         </div>
-        <div>
-            <span class="input-group-btn">
-                              <button class="btn btn-success" >Buy Craic</button>
-                          </span>
-        </div>
-        </form>
-        </span>
-        </p>
     </div>
-</div>
-</div>
-<hr>
+    <hr>
 </div>
 {% endfor %} {% endblock %}
