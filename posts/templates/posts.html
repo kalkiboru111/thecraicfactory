@@ -18,11 +18,9 @@
                 <p><span class="boldtext">Votes:</span> {{post.votes_total}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
-                {% if post.image %}
-                <p><span class="boldtext"> Image:</span>
-                    <img src="{{MEDIA_URL}}{{ post.image }}" alt="{{ post.title }}">
+                <p><span class="boldtext"> Image:</span> 
+                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ post.image }}')" alt="{{ post.title }}"></div>
                 </p>
-                {% endif %}
                 <p><span>
                     <form method="post" action="{% url 'upvote' post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
@@ -32,13 +30,12 @@
                     <p>
                         <span>
                     <form method="post" action="{% url 'add_to_cart' post.id %}" value='quantity' style="font-size: 2em;">
-                        <h5>Craic Counter</h5>
                         {% csrf_token %}
                       <div class="input-group">
                           <div class="qty mt-5">
                             <span class="minus bg-dark">-</span>
                         <input type="number" class="count" name="qty" value="1">
-                        <span class="plus bg-dark">+</span>
+                    <span class="plus bg-dark">+</span>
             </div>
         </div>
         <div>

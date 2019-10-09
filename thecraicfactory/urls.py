@@ -29,11 +29,14 @@ from vote import urls as urls_upvote
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
+from products import urls as urls_products
+from products.views import all_products
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', get_posts, name='index'),
+    url(r'^products/', include(urls_products)),
     url(r'^accounts/', include(urls_accounts)),
     url(r'^posts/', include(urls_posts)),
     url(r'^cart/', include(urls_cart)),
