@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from posts.models import Post
+from products.models import Product
 
 # Create your views here.
 def do_search(request):

@@ -1,3 +1,10 @@
+.col-xs-12{
+    margin-top: 75px;
+}
+
+.row{
+    margin-left: 10px;
+}
 
 /*Prevent text selection*/
 span{
@@ -41,8 +48,6 @@ footer {
     background-color: #ededed;
 }
 
-
-
 h1, h1 a {
     color: #555555;
     text-decoration: none;
@@ -55,7 +60,7 @@ h1, h1 a {
 }
 
 #masthead h1 {
-    font-size: 55px;
+    font-size: 35px;
     line-height: 1;
     margin-top: 50px;
 }
@@ -128,10 +133,7 @@ a, a:hover {
     height: 100px;
 }
 
-.panel .lead {
-    overflow: hidden;
-    height: 90px;
-}
+
 
 .label-float {
     margin: 0 auto;
@@ -150,7 +152,7 @@ a, a:hover {
 
 @media screen and (min-width: 768px) {
     #masthead h1 {
-        font-size: 80px;
+        font-size: 60px;
     }
 }
 
