@@ -66,5 +66,4 @@ def user_profile(request):
     # Gettting user object
     user = User.objects.get(email=request.user.email)
     # Gettting profile object through foreign key
-    profile = request.user.profile
-    return render(request, 'profile.html', {'profile': profile})
+    return render(request, 'profile.html', {'user': user})
