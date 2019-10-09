@@ -24,7 +24,7 @@
                     <h3>{{ item.product.name }}</h3>
                     <p class="product-description">{{ item.product.descriptio }}</p>
                     <p>{{ item.quantity }}</p>
-                    <p>item.product.price</p>
+                    <p>{{item.product.price}}</p>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
     <legend>Payment Details</legend>
 
-    <div id="credit-card-errors" style="display: none;">
+    <div id="credit-card-errors" style="display: none">
         <div id="alert-message block-message error" id="stripe-error-message"></div>
     </div>
 

@@ -1,5 +1,5 @@
 from django.db import models
-from posts.models import Post
+from products.models import Product
 
 # Create your models here.
 class Order(models.Model):
@@ -19,7 +19,7 @@ class Order(models.Model):
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
-    post = models.ForeignKey(Post, null=False)
+    product = models.ForeignKey(Product, null=False)
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
