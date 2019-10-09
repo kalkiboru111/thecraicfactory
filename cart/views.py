@@ -9,7 +9,6 @@ def view_cart(request):
 
 @login_required
 def add_to_cart(request, id):
-    """Add a quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
 
     cart = request.session.get('cart', {})
@@ -20,10 +19,6 @@ def add_to_cart(request, id):
 
 @login_required
 def adjust_cart(request, id):
-    """
-    Adjust the quantity of the specified product to the specified
-    amount
-    """
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
