@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'thecraicfactory.urls'
@@ -96,7 +96,7 @@ if "DATABASE_URL" in os.environ:
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
-    print("Postgres URL not found, so jusing S.QLite instead")
+    print("Postgres URL not found, so jusing SQLite instead")
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -168,7 +168,7 @@ STATIC_ROOT = (os.path.join(BASE_DIR, 'staticfiles'))
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILES_STORAGE = 'custom_storages.MediaStorage'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
