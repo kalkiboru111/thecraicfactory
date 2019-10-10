@@ -18,7 +18,7 @@
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Tag:</span> {{ post.tag }}</p>
                 <p><span class="boldtext"> Image:</span>
-                    <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ post.image }}')" alt="{{ post.title }}"></div>
+                    <div class="product"><img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}"></img></div>
                 </p>
                 <p><span>
                     <form method="post" action="{% url 'upvote' post.id %}" style="font-size: 2em;" >

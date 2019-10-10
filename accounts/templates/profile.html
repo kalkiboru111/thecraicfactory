@@ -12,7 +12,7 @@
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary"> {{ user.email }} </p>
       <p class="text-secondary"> {{ user.bio }} </p>
-      <img class="rounded-circle account-img" src= "{{MEDIA_URL}}{{ user.profile_image.url }}">
+      <img class='rounded-circle account-img' src="{{ MEDIA_URL }}{{ user.profile_image }}" alt='avatar'>
     </div>
   </div>
   <!-- FORM HERE -->
