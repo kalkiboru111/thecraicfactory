@@ -1,18 +1,11 @@
-{% extends 'base.html' %}
-
-{% block page_title %}{{ user }}'s Profile{% endblock %}
-
-{% block page_heading %}{{ user }}'s Profile {% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile {% endblock %} {% block content %}
 
 <div class="content-section">
   <div class="media">
     <div class="media-body">
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary"> {{ user.email }} </p>
-      <p class="text-secondary"> {{ user.bio }} </p>
-      <img class='rounded-circle account-img' src="{{ MEDIA_URL }}{{ user.profile_image }}" alt='avatar'>
+        <img class='rounded-circle account-img'  src="{{ MEDIA_URL }}{{ user.profile_image.url }}" alt='craic addict'>
     </div>
   </div>
   <!-- FORM HERE -->

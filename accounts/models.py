@@ -7,7 +7,6 @@ from PIL import Image
 class Profile(models.Model):
     #one to one relationship between user's profile and user model and on delete of profile. Cascade deletes profile if user deleted, but not vice versa. 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
     # set default profile photo and specifies directory where images will be uplaoded to.
     profile_image = models.ImageField(upload_to='profile_pics', default='denzel.jpeg') # where is stored the user profile image
     

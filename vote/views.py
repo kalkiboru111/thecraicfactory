@@ -10,7 +10,7 @@ def upvote(request, pk):
     if request.method == 'POST':
         post = get_object_or_404(Post, pk=pk)
         post.votes_total += 1
-        # changes
+        # changes number of votes associated with the post
         try:
             Vote.objects.create(post=post, user=request.user)
             post.save()
