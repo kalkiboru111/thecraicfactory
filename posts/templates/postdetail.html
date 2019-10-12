@@ -16,10 +16,16 @@
                 <p><span class="boldtext">Views:</span> {{post.views}}</p>
                 <p><span class="boldtext">Votes:</span> {{post.votes_total}}</p>
                 <p><span class="boldtext">Tag:</span> {{ post.tag }}</p>
-                {% if post.image %}
-                <p><span class="boldtext">Image:</span>
-                    <img class="img-blogpost" src="{{MEDIA_URL}}{{ post.image }}"></p>
-                {% endif %}
+                <p><span class="boldtext"> Image:</span></p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="thumbnail">
+                            <a href="{{ MEDIA_URL }}{{ post.image }}">
+                                <img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}" style="width:100%">
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <a href="{% url 'get_posts' %}" class="btn btn-default">Back to the Craic Pipe</a>
                 <a href="{% url 'edit_post' post.id %}" class="btn btn-default">Edit Post</a>
                 <hr>
