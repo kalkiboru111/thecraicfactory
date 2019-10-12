@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% for post in posts %}
 <div class="row">
     <div class="col-md-2 col-sm-3 text-center">
-        <img src="{{ user.profile.profile_image.url }}" class="story-img">
+        <img src="{{ user.profile.profile_image.url }}" class="rounded-circle account-img story-img">
         <p><span class="boldtext">Author: {{ post.author }}</span> </p>
     </div>
     <div class="col-md-10 col-sm-9">
