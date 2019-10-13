@@ -1,5 +1,12 @@
 {% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile {% endblock %} 
-{% load crispy_forms_tags %} {% block content %}
+{% load crispy_forms_tags %} 
+{% load static from staticfiles %}
+{% block head_js %}
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+{% endblock %}
+{% block content %}
+
+
 
 <div class="content-section">
   <div class="media">
@@ -14,8 +21,8 @@
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
-      {{ u_form|crispy }} 
-      {{ p_form|crispy }}
+      {{ u_form | crispy }} 
+      {{ p_form | crispy }}
     </fieldset>
     <div class="form-group">
       <button class="btn btn-outline-info" type="submit">Update</button>

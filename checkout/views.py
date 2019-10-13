@@ -6,6 +6,7 @@ from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
 from products.models import Product
+from posts.models import Post
 import stripe
 
 # Create your views here.
@@ -47,8 +48,9 @@ def checkout(request):
             
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+                
                 request.session['cart'] = {}
-                return redirect(reverse('products'))
+                return redirect(reverse('get_posts'))
             else:
                 messages.error(request, "Your money is no good here... no, really...")
         else:
@@ -59,3 +61,5 @@ def checkout(request):
         order_form = OrderForm()
     
     return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
+    
+    
