@@ -9,7 +9,7 @@
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary"> {{ user.email }} </p>
       <p><span class="boldtext">Bio:</span><p class="text-secondary"> {{ user.profile.bio }} </p>
-        <img class='story-img'  src="{{ user.profile.profile_image.url }}" alt='craic addict'\>
+       <p><img src="{{ user.profile.profile_image.url }}" alt='craic addict' class="rounded-circle account-img story-img"></p>
     </div>
   </div>
   <form method="POST" enctype="multipart/form-data">
