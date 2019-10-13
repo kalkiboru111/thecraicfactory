@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile {% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile {% endblock %} 
+{% load crispy_forms_tags %}
+{% block content %}
 
 <div class="content-section">
   <div class="media">
@@ -6,10 +9,15 @@
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary"> {{ user.email }} </p>
       <p><span class="boldtext">Bio:</span><p class="text-secondary"> {{ user.profile.bio }} </p>
-        <img class='story-img'  src="{{ user.profile.profile_image.url }}" alt='craic addict'>
+        <img class='story-img'  src="{{ user.profile.profile_image.url }}" alt='craic addict'\>
     </div>
   </div>
-  <!-- FORM HERE -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} 
+    {{ u_form|crispy }}
+    {{ p_form|crispy }}
+    <button type="submit">Update</button>
+</form>
 </div>
 
 {% endblock %}

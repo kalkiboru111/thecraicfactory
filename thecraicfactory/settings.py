@@ -50,7 +50,10 @@ INSTALLED_APPS = [
     'vote',
     'cart',
     'products',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -84,12 +87,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'thecraicfactory.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-
 
 if "DATABASE_URL" in os.environ:
     DATABASES = {

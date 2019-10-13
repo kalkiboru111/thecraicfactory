@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from accounts.forms import UserLoginForm, UserRegistrationForm
+from accounts.forms import UserLoginForm, UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.models import User
 from .models import Profile
 
@@ -63,7 +63,14 @@ def register(request):
         
 def user_profile(request):
     '''The user profile page'''
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+    
+    context = {
+        'u_form': u_form,
+        'p_form':p_form
+    }
     # Gettting user object
     user = User.objects.get(email=request.user.email)
     # Gettting profile object through foreign key
-    return render(request, 'profile.html', {'user': user})
+    return render(request, 'profile.html', {'user': user}, context)

@@ -9,7 +9,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # set default profile photo and specifies directory where images will be uplaoded to.
     bio = models.TextField(max_length=280, default='yet another craic addict')
-    profile_image = models.ImageField(upload_to='profile_pics', blank=True) # where is stored the user profile image
+    profile_image = models.ImageField(upload_to='profile_pics', default="{{ MEDIA_URL }}{{ denzel.jpeg }}") # where is stored the user profile image
     
     def __str__(self):
         return f'{self.user.username} Profile'

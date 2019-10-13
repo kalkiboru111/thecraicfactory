@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from products.models import Product
 
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=280)
@@ -15,7 +16,6 @@ class Post(models.Model):
     friend_tag = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to="post_images/", blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts_created')
-    
 
     def __unicode__(self):
         return self.title

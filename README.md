@@ -193,3 +193,5 @@ Clone the repo from GitHub and innstall the requirements.txt "using pip3 install
 
 ## Credits
 I would like to thank Michael, Xavier and Haley for their assistance in handling a number of techincal issues that arose during development. 
+
+I relied on Corey Schafer's tutorial regarding Django Signals and profile images, availabl here:  https://www.youtube.com/watch?v=FdVuKt_iuSI
