@@ -173,7 +173,7 @@ I included an if-else statement in settings which used the PostgreSQL database, 
 
 To deploy the code locally, undertake the following steps: 
 
-###On GitHub -
+## On Github
 
 Manually download the code base and then upload to your preferred IDE. Install requirements.txt using the "pip3 install -r requirements.txt" command. Changed the following settings:
 - ADD ALLOWED HOST
@@ -182,7 +182,7 @@ Manually download the code base and then upload to your preferred IDE. Install r
 Run the application using the "python3 manage.py runserver $IP:$PORT" command. 
 Please note step 4 may be different depending on the operating system you are running, please refer to the documentation for more details on running the Django server on different OS's
 
-###Via the Terminal
+## Via the Terminal
 
 Clone the repo from GitHub and innstall the requirements.txt "using pip3 install -r requirements.txt". Update the settings, as above. Run the application using the "python3 manage.py runserver $IP:$PORT" command. 
 
