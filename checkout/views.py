@@ -28,16 +28,17 @@ def checkout(request, post):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
-                post = get_object_or_404(Post, post_id=post.id)
+                post = get_object_or_404(Post, post=post.id)
                 total += quantity * product.price
                 post.craic_count += quantity * product.price
+                post.save()
                 
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
                     quantity=quantity
                 )
-                post.save()
+                
                 order_line_item.save()
             
             try:

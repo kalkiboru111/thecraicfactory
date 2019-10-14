@@ -37,7 +37,7 @@
 
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}" >
     <legend>Payment Details</legend>
-
+    <input type="hidden" value= {{ post.id }} />
     <div class="form-group col-md-6">
         {{ order_form | as_bootstrap }}
     </div>
