@@ -1,2 +1,6 @@
 foo
-c9/
+.c9
+.git
+.theia
+__pycache__
+migrations/
