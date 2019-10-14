@@ -35,7 +35,7 @@
                     </form>
                 </p>
                 <p>
-                    <a href="{% url 'products' %}" class="btn btn-success">Buy {{ post.author }} Craic</a>
+                    <a href="{% url 'products' post.id %}" class="btn btn-success">Buy {{ post.author }} Craic</a>
                 </p>
             </div>
         </div>

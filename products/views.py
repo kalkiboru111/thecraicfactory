@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product
+from posts.models import Post
 
 # Create your views here.
-def all_products(request):
+def all_products(request, pk):
     products = Product.objects.all()
-    return render(request, "products.html", {"products": products})
+    post = get_object_or_404(Post, pk)
+    post.id = pk
+    return render(request, "products.html", {"products": products, "post": post})
