@@ -1,25 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
-<div class="row row-flex">
-    {% for product in products %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-            <div class="panel-body">
-                <h3>{{ product.name }}</h3>
-                <p class="product-description">{{ product.description }}</p>
-                <p>{{ product.price }}</p>
-                <div class="product" style="background-image" src="{{MEDIA_URL}}{{ product.image.url }}"></div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="panel-group">
+            {% for product in products %}
+            <div class="panel">
+                <div class="panel-body">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p>{{ product.price }}</p>
+                    <img src="{{ product.image.url }}"></img>
+                </div>
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group">
                         <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity" required>
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Add</button>
-                        </span>
+                <button class="btn btn-success" type="submit">Add</button>
+            </span>
                     </div>
                 </form>
             </div>
+
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 </div>
+
 {% endblock %}

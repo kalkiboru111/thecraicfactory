@@ -10,7 +10,7 @@
             <div class="col-xs-9">
                 <p>{{ post.content|truncatewords:60 }}</p>
                 <p><span class="inline-block"> Craic earned for this post:</span>
-                    <div class="product"> {{ post.purchased_product }}</div>
+                    <div class="product"> {{ post.craic_count }}</div>
                 </p>
                 <p><a href="{% url 'post_detail' post.id %}" class="btn btn-default">Read more</a></p>
                 <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>

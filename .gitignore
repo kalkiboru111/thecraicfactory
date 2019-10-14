@@ -1,4 +1,6 @@
 /foo
+env.py
+env.pyc
 .c9
 .git
 .theia
