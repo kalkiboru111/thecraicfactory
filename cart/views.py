@@ -12,13 +12,12 @@ def view_cart(request):
 def add_to_cart(request, id, pk):
     quantity = int(request.POST.get('quantity'))
     post = get_object_or_404(Post, pk)
-    post.id = pk
 
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    render(request, "cart.html", {"post": post})
 
 @login_required
 def adjust_cart(request, id):
