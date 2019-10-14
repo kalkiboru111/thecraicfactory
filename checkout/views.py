@@ -18,7 +18,6 @@ def checkout(request, post):
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
-        
 
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
@@ -29,13 +28,16 @@ def checkout(request, post):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
+                post = get_object_or_404(Post, post_id=post.id)
                 total += quantity * product.price
+                post.craic_count += quantity * product.price
                 
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
                     quantity=quantity
                 )
+                post.save()
                 order_line_item.save()
             
             try:
@@ -51,10 +53,7 @@ def checkout(request, post):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
-                
-                post = get_object_or_404(Post, pk=post.id)
-                post.craic_count += quantity * product.price
-                
+       
                 return redirect(reverse('get_posts'))
             else:
                 messages.error(request, "Your money is no good here... no, really...")

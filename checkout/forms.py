@@ -1,5 +1,6 @@
 from django import forms
 from .models import Order
+from posts.models import Post
 
 
 class MakePaymentForm(forms.Form):
@@ -12,7 +13,7 @@ class MakePaymentForm(forms.Form):
     expiry_month = forms.ChoiceField(label='Month', choices=MONTH_CHOICES, required=False)
     expiry_year = forms.ChoiceField(label='Year', choices=YEAR_CHOICES, required=False)
     stripe_id = forms.CharField(widget=forms.HiddenInput)
-
+    post_id = forms.CharField(widget=forms.HiddenInput, required=True)
 
 class OrderForm(forms.ModelForm):
 
@@ -23,3 +24,6 @@ class OrderForm(forms.ModelForm):
             'town_or_city', 'street_address1', 'street_address2',
             'county'
         )
+
+        
+        

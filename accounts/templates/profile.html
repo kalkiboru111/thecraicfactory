@@ -18,6 +18,7 @@
         <p><img src="{{ user.profile.profile_image.url }}" alt='craic addict' class="rounded-circle account-img story-img" default="{{MEDIA_URL}}{{denzel.jpeg}}"></p>
     </div>
   </div>
+  <div class="col-xs-6">
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
@@ -28,6 +29,7 @@
       <button class="btn btn-outline-info" type="submit">Update</button>
     </div>
   </form>
+  </div>
 </div>
 
 {% endblock %}
