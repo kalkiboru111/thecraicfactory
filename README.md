@@ -29,18 +29,18 @@ The project has a number of features, some of which have already been touched on
 - The Craic Pipe - allows users to get their fix of craic, by having a stream of content that is "weighted" based upon votes, views and craic. 
 - The Vote Button - allows users to vote on posts which they like, by clicking on the thumbs up button next to the post. Each user can only vote only once, which means that votes are a felicitous representation of what the Craic Factor Community prefers. 
 - The View Count - allows user to assess how many other user have seen a post, and thereby determine whether its perceived value relative to the amount of votes and craic that it has.
-- The Craic Count - displays both the quantity of craic that has been purchased for a particular post, and also the specific products that have been purchased. For instance, if someone has purchased a mother-load for a post, then it is a signal that that post is especially interesting/valuable. 
+- The Craic Count - displays the quantity of craic that has been purchased for a particular post. 
 - The Buy Craic Button - enables users who wish to purchase craic to do so in a relatively seemless fashion, by clicking on the button which redirects to the products page. 
 - The Cart - enables users to track the quantity of craic products they are using by signifying the number of products the user has added to their cart as a number next to the cart. It then persists that quantity, while allowing the user to continue to browse the application. This ensures continuity of use and that users don't get distracted from the application or or simply quit the application once they have made a single purchase. 
 - The New Form - feature enables user to submit new posts, with images, tags and other fields, by simply clicking on the next form button. The text field then provides users with the area to enter their titillating tale of craic. 
-- The Friends Tag - enables users to tag other users whom they feel will find the post particularly interesting. 
-- The Topic Tag - enables users to tag posts with particular categories by simply entering the name of the category into the tag field. This enables the user to categorize their craic into genres of sub-craic, and search through these sub-genres accordingly. 
 - The Search Bar - a user who wants to search through posts for a particular type of craic can do so by simply entering their search query into the search bar. Consistent with this application's emphasis on content, the search bar features in the same place in the nav bar on every paage in the application. It thereby enables a user to search for whatever craic strikes his fancy, no matter where he may be in the application at that particular moment. 
 
 ### Features Left to Implement
 - I am considering adding an algorithm that sorts the posts in terms either votes, views, the quantity of craic that has been purchased for a particular post, or some cobination of these criteria. However, I feel ranking in this fashion is not really consistent with the organic nature of this application. Also, it's unlikely to be necessary to provide this degree of order to the content unless and until this app has a large amount of users. 
 - I may provide users with an add videos feature.  
 - I have deliberately left a significant amount of white space to the right side of the Craic Pipe - this is real estate for advertisers (no advertisements for the sale of illicit substances will be accepted).
+- The Friends Tag - will enable users to tag other users whom they feel will find the post particularly interesting. 
+- The Topic Tag - enables users to tag posts with particular categories by simply entering the name of the category into the tag field. This enables the user to categorize their craic into genres of sub-craic, and search through these sub-genres accordingly. 
 
 ## Technologies Used
 
@@ -173,7 +173,7 @@ I included an if-else statement in settings which used the PostgreSQL database, 
 
 To deploy the code locally, undertake the following steps: 
 
-###On GitHub -
+## On Github
 
 Manually download the code base and then upload to your preferred IDE. Install requirements.txt using the "pip3 install -r requirements.txt" command. Changed the following settings:
 - ADD ALLOWED HOST
@@ -182,7 +182,7 @@ Manually download the code base and then upload to your preferred IDE. Install r
 Run the application using the "python3 manage.py runserver $IP:$PORT" command. 
 Please note step 4 may be different depending on the operating system you are running, please refer to the documentation for more details on running the Django server on different OS's
 
-###Via the Terminal
+## Via the Terminal
 
 Clone the repo from GitHub and innstall the requirements.txt "using pip3 install -r requirements.txt". Update the settings, as above. Run the application using the "python3 manage.py runserver $IP:$PORT" command. 
 
