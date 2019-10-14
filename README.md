@@ -33,14 +33,14 @@ The project has a number of features, some of which have already been touched on
 - The Buy Craic Button - enables users who wish to purchase craic to do so in a relatively seemless fashion, by clicking on the button which redirects to the products page. 
 - The Cart - enables users to track the quantity of craic products they are using by signifying the number of products the user has added to their cart as a number next to the cart. It then persists that quantity, while allowing the user to continue to browse the application. This ensures continuity of use and that users don't get distracted from the application or or simply quit the application once they have made a single purchase. 
 - The New Form - feature enables user to submit new posts, with images, tags and other fields, by simply clicking on the next form button. The text field then provides users with the area to enter their titillating tale of craic. 
-- The Friends Tag - enables users to tag other users whom they feel will find the post particularly interesting. 
-- The Topic Tag - enables users to tag posts with particular categories by simply entering the name of the category into the tag field. This enables the user to categorize their craic into genres of sub-craic, and search through these sub-genres accordingly. 
 - The Search Bar - a user who wants to search through posts for a particular type of craic can do so by simply entering their search query into the search bar. Consistent with this application's emphasis on content, the search bar features in the same place in the nav bar on every paage in the application. It thereby enables a user to search for whatever craic strikes his fancy, no matter where he may be in the application at that particular moment. 
 
 ### Features Left to Implement
 - I am considering adding an algorithm that sorts the posts in terms either votes, views, the quantity of craic that has been purchased for a particular post, or some cobination of these criteria. However, I feel ranking in this fashion is not really consistent with the organic nature of this application. Also, it's unlikely to be necessary to provide this degree of order to the content unless and until this app has a large amount of users. 
 - I may provide users with an add videos feature.  
 - I have deliberately left a significant amount of white space to the right side of the Craic Pipe - this is real estate for advertisers (no advertisements for the sale of illicit substances will be accepted).
+- The Friends Tag - will enable users to tag other users whom they feel will find the post particularly interesting. 
+- The Topic Tag - enables users to tag posts with particular categories by simply entering the name of the category into the tag field. This enables the user to categorize their craic into genres of sub-craic, and search through these sub-genres accordingly. 
 
 ## Technologies Used
 
