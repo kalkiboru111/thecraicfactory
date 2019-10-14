@@ -14,10 +14,12 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required()
-def checkout(request, post):
+def checkout(request):
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
+        post_id = payment_form.post_id
+        post = post_id
 
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
@@ -28,7 +30,6 @@ def checkout(request, post):
             total = 0
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
-                post = get_object_or_404(Post, post=post.id)
                 total += quantity * product.price
                 post.craic_count += quantity * product.price
                 post.save()
