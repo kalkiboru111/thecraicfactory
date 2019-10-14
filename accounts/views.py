@@ -84,4 +84,4 @@ def user_profile(request):
     # Gettting user object
     user = User.objects.get(email=request.user.email)
     # Gettting profile object through foreign key
-    return render(request, 'profile.html', {'profile': user, 'u_form': u_form, 'p_form':p_form})
+    return render(request, 'profile.html', {'profile': user, 'u_form': u_form, 'p_form': p_form})
