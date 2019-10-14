@@ -12,7 +12,7 @@ def index(request):
 @login_required
 def logout(request):
     auth.logout(request)
-    messages.success(request, 'You have successfully been logged out, bitch!')
+    messages.success(request, 'You have successfully been logged out!')
     return redirect(reverse('index'))
     
 def login(request):
