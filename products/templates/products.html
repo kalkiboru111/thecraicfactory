@@ -11,7 +11,7 @@
                     <p>{{ product.price }}</p>
                     <img src="{{ product.image.url }}"></img>
                 </div>
-                <form method="post" action="{% url 'add_to_cart' product.id post.id %}">
+                <form method="post" action="{% url 'add_to_cart' id=product.id pk=post.id %}">
                     {% csrf_token %}
                     <div class="input-group">
                         <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity" required>
