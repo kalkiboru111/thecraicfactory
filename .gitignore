@@ -7,3 +7,4 @@ env.pyc
 .theia
 __pycache__
 migrations
+thecraicfactory/__pycache__

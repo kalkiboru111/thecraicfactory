@@ -13,8 +13,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-if os.path.exists('env.py'):
+#if os.path.exists('env.py'):
     #import env
+    
+try:
+    import env
+except:
+    pass   
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
