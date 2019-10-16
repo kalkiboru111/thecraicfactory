@@ -2,7 +2,8 @@
 env.py
 env.pyc
 .c9
+.c9/
 .git
 .theia
 __pycache__
-migrations/
+migrations

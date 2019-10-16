@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from .views import all_products
+from posts.models import Post
 
 urlpatterns = [
-   url(r'^all_products/(?P<id>\d+)$', all_products, name='all_products'),
+   url('^(?P<id>\d+)/$', all_products, name='all_products'),
 ]
