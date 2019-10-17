@@ -5,13 +5,12 @@ from posts.models import Product
 
 # Create your views here.
 @login_required
-def view_cart(request, pk) if pk else None:
-    """A View that renders the cart contents page"""
+def view_cart(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, "cart.html", {"post": post})
 
 @login_required
-def add_to_cart(request, id, pk) if pk else None:
+def add_to_cart(request, id, pk):
     quantity = int(request.POST.get('quantity'))
     post = get_object_or_404(Post, pk=pk)
 
@@ -22,7 +21,7 @@ def add_to_cart(request, id, pk) if pk else None:
     render(request, "cart.html", {"post": post})
 
 @login_required
-def adjust_cart(request, id, pk) if pk else None:
+def adjust_cart(request, id, pk):
     quantity = int(request.POST.get('quantity'))
     post = get_object_or_404(Post, pk=pk)
     cart = request.session.get('cart', {})
