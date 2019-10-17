@@ -35,7 +35,7 @@
                     </form>
                 </p>
                 <p><span>
-                    <form method="post" action="{% url 'all_products' post.id %}" style="font-size: 2em;" >
+                    <form method="post" action="{% url 'all_products' pk=post.id %}" style="font-size: 2em;" >
                         {% csrf_token %}
                       <button type="submit" class="btn btn-success">Buy {{ post.author }} Craic</button>
                     </form>

@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from posts.models import Post
+from posts.models import Product
 
 # Create your views here.
 @login_required
-def view_cart(request):
+def view_cart(request, pk) if pk else None:
     """A View that renders the cart contents page"""
-    return render(request, "cart.html")
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, "cart.html", {"post": post})
 
 @login_required
-def add_to_cart(request, id, pk):
+def add_to_cart(request, id, pk) if pk else None:
     quantity = int(request.POST.get('quantity'))
-    post = get_object_or_404(Post, pk)
+    post = get_object_or_404(Post, pk=pk)
 
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
@@ -20,8 +22,9 @@ def add_to_cart(request, id, pk):
     render(request, "cart.html", {"post": post})
 
 @login_required
-def adjust_cart(request, id):
+def adjust_cart(request, id, pk) if pk else None:
     quantity = int(request.POST.get('quantity'))
+    post = get_object_or_404(Post, pk=pk)
     cart = request.session.get('cart', {})
 
     if quantity > 0:
@@ -30,4 +33,4 @@ def adjust_cart(request, id):
         cart.pop(id)
     
     request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+    render(request, "cart.html", {"post": post})
