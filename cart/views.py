@@ -5,25 +5,24 @@ from posts.models import Product
 
 # Create your views here.
 @login_required
-def view_cart(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, "cart.html", {"post": post})
+def view_cart(request):
+    return render(request, "cart2.html")
 
 @login_required
 def add_to_cart(request, id, pk):
     quantity = int(request.POST.get('quantity'))
     post = get_object_or_404(Post, pk=pk)
+    print(post.id)
 
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
-    render(request, "cart.html", {"post": post})
+    return render(request, "cart2.html", {"post": post})
 
 @login_required
-def adjust_cart(request, id, pk):
+def adjust_cart(request, id):
     quantity = int(request.POST.get('quantity'))
-    post = get_object_or_404(Post, pk=pk)
     cart = request.session.get('cart', {})
 
     if quantity > 0:
@@ -32,4 +31,4 @@ def adjust_cart(request, id, pk):
         cart.pop(id)
     
     request.session['cart'] = cart
-    render(request, "cart.html", {"post": post})
+    render(request, "cart2.html")

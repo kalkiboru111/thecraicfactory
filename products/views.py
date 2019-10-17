@@ -6,4 +6,5 @@ from posts.models import Post
 def all_products(request, pk):
     products = Product.objects.all()
     post = get_object_or_404(Post, pk=pk)
+    print(post.id)
     return render(request, "products.html", {"products": products, "post": post})
