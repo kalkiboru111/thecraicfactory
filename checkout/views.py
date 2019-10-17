@@ -31,8 +31,8 @@ def checkout(request, pk):
             for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
                 total += quantity * product.price
-                pk.craic_count += quantity * product.price
-                pk.save()
+                post.craic_count += quantity * product.price
+                post.save()
                 
                 order_line_item = OrderLineItem(
                     order=order,
