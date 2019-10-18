@@ -9,10 +9,16 @@
         <div class="row">
             <div class="col-xs-9">
                 <p>{{ post.content|truncatewords:60 }}</p>
-                <p><span class="inline-block"> Craic earned for this post:</span>
-                    <div class="product"> {{ post.craic_count }}</div>
-                </p>
+                <div class="product">
+                <span class="boldtext">Craic earned for this post: <h4> <span class="glyphicon glyphicon-euro">
+                    </span> {{ post.craic_count }}</span></h4>
+                </div>
                 <p><a href="{% url 'post_detail' post.id %}" class="btn btn-default">Read more</a></p>
+                <p display='inline'>
+                    <form method="post" action="{% url 'all_products' pk=post.id %}" style="font-size: 2em;" >
+                        {% csrf_token %}
+                      <button type="submit" class="btn btn-success">Buy {{ post.author }} Craic</button>
+                    </form> </p>
                 <p><span class="boldtext">Published on:</span> {{ post.published_date }} </p>
                 <p><span class="boldtext">Views:</span> {{post.views}}</p>
                 <p><span class="boldtext">Votes:</span> {{post.votes_total}}</p>
