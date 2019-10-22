@@ -14,8 +14,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    pk = post.id
+    post = get_object_or_404(Post, pk=pk.id)
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
