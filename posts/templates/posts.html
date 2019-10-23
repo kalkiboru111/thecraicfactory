@@ -40,12 +40,6 @@
                       <button type="submit"><i class="fas fa-thumbs-up"></i></button>
                     </form>
                 </p>
-                <p><span>
-                    <form method="post" action="{% url 'all_products' pk=post.id %}" style="font-size: 2em;" >
-                        {% csrf_token %}
-                      <button type="submit" class="btn btn-success">Buy {{ post.author }} Craic</button>
-                    </form>
-                </p>
             </div>
         </div>
     </div>

@@ -21,7 +21,8 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+class PostProduct(models.Model):
+    post_product = models.ForeignKey(Post, on_delete=models.CASCADE)
 
-
-
-
+    def __unicode__(self):
+        return self.post_product

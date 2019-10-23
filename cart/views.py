@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from posts.models import Post
-from posts.models import Product
+from posts.models import Product, PostProduct
 
 # Create your views here.
 @login_required
 def view_cart(request):
-    return render(request, "cart2.html")
+    post_product = get_object_or_404(PostProduct)
+    return render(request, "cart2.html", {"post_product": post_product} )
 
 @login_required
 def add_to_cart(request, id, pk):
