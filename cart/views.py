@@ -13,6 +13,8 @@ def add_to_cart(request, id, pk):
     post = pk
 
     cart = request.session.get('cart', {})
+    print('*****************************')
+    print(cart)  
     if product_id in cart:
         if post in cart[product_id]:
             cart[product_id][post] += quantity
@@ -32,9 +34,10 @@ def add_to_cart(request, id, pk):
     #cart[id] = cart.get(id, quantity, pk)
 
     request.session['cart'] = cart
-    print(cart)
-    #return render(request, "cart2.html", {"post": post, "products": products})
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    print('*****************************')
+    print(cart)  
+    return render(request, "cart2.html", {"post": post, "product_id": product_id})
+    # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 # Create your views here.
 @login_required
