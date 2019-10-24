@@ -3,25 +3,27 @@ from django.contrib.auth.decorators import login_required
 from posts.models import Post
 from posts.models import Product
 from django.http import HttpResponseRedirect
+from checkout.models import OrderLineItem
 
 @login_required
-def add_to_cart(request):
-    product_id = request.POST['product']
+def add_to_cart(request, id, pk):
+    #product_id = request.POST['product']
+    product_id = id
     quantity = int(request.POST.get('quantity'))
-    post = request.POST['post']
+    post = pk
 
-    products = Product.objects.all()
     cart = request.session.get('cart', {})
-    
-    if product_id in cart:
-        if post in cart[product_id]:
-            cart[product_id][post] += quantity
-        else:
-            cart[product_id].update({post:quantity})
-    else:
-        cart[product_id]={post:quantity}
+    for product_id, post, quantity in cart:
+        cart[post][product_id] += quantity
+        print(cart.total) 
         
-    print(cart) 
+    # if post in cart:
+    #     if product_id in cart[post]:
+    #         cart[post][product_id] += quantity
+    #     else:
+    #         cart[post].update({product_id:quantity})
+    # else:
+    #     cart[post]={product_id:quantity}
     
     #cart[id] = cart.get(id, quantity, pk)
 
