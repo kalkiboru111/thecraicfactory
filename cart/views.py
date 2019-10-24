@@ -13,9 +13,13 @@ def add_to_cart(request, id, pk):
     post = pk
 
     cart = request.session.get('cart', {})
-    for product_id, post, quantity in cart:
-        cart[post][product_id] += quantity
-        print(cart.total) 
+    if product_id in cart:
+        if post in cart[product_id]:
+            cart[product_id][post] += quantity
+        else:
+            cart[product_id].update({post:quantity})
+    else:
+        cart[product_id]={post:quantity}
         
     # if post in cart:
     #     if product_id in cart[post]:
@@ -28,6 +32,7 @@ def add_to_cart(request, id, pk):
     #cart[id] = cart.get(id, quantity, pk)
 
     request.session['cart'] = cart
+    print(cart)
     #return render(request, "cart2.html", {"post": post, "products": products})
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
