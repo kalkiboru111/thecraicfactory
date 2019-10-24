@@ -9,12 +9,10 @@ from checkout.models import OrderLineItem
 def add_to_cart(request, id, pk):
     #product_id = request.POST['product']
     product_id = id
-    quantity = int(request.POST.get('quantity'))
     post = pk
-
+    quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
-    print('*****************************')
-    print(cart)  
+    
     if product_id in cart:
         if post in cart[product_id]:
             cart[product_id][post] += quantity
@@ -22,7 +20,7 @@ def add_to_cart(request, id, pk):
             cart[product_id].update({post:quantity})
     else:
         cart[product_id]={post:quantity}
-        
+    
     # if post in cart:
     #     if product_id in cart[post]:
     #         cart[post][product_id] += quantity
