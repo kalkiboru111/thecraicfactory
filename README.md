@@ -26,6 +26,7 @@ The project has a number of features, some of which have already been touched on
 
  
 ### Existing Features
+- The Craic Count - this is the most sophisticated feature. It counts the amount of craic purchased for a particular post. Users select a product (which is just a certain multiple of craic), and that craic is then attributed to the post. It carries out this operation using nested dictionaries, with the outer dictionary being a collectition of product_id: {} pairs, and the inner dictionary being a collection of { post: quantity } pairs. 
 - The Craic Pipe - allows users to get their fix of craic, by having a stream of content that is "weighted" based upon votes, views and craic. 
 - The Vote Button - allows users to vote on posts which they like, by clicking on the thumbs up button next to the post. Each user can only vote only once, which means that votes are a felicitous representation of what the Craic Factor Community prefers. 
 - The View Count - allows user to assess how many other user have seen a post, and thereby determine whether its perceived value relative to the amount of votes and craic that it has.
@@ -35,12 +36,18 @@ The project has a number of features, some of which have already been touched on
 - The New Form - feature enables user to submit new posts, with images, tags and other fields, by simply clicking on the next form button. The text field then provides users with the area to enter their titillating tale of craic. 
 - The Search Bar - a user who wants to search through posts for a particular type of craic can do so by simply entering their search query into the search bar. Consistent with this application's emphasis on content, the search bar features in the same place in the nav bar on every paage in the application. It thereby enables a user to search for whatever craic strikes his fancy, no matter where he may be in the application at that particular moment. 
 
+### Bugs yet to be addressed
+- There are a number of relatively straightforward issues which were not rectified because they were not sufficiently important to address right now. 
+    - To adjust the quantities in the cart, you must first click on the "cart" icon. You cannot do it immediately after adding the products. This will be addressed in a future version. 
+    - The cart is not displaying the product names and descriptions. 
+
 ### Features Left to Implement
 - I am considering adding an algorithm that sorts the posts in terms either votes, views, the quantity of craic that has been purchased for a particular post, or some cobination of these criteria. However, I feel ranking in this fashion is not really consistent with the organic nature of this application. Also, it's unlikely to be necessary to provide this degree of order to the content unless and until this app has a large amount of users. 
 - I may provide users with an add videos feature.  
 - I have deliberately left a significant amount of white space to the right side of the Craic Pipe - this is real estate for advertisers (no advertisements for the sale of illicit substances will be accepted).
 - The Friends Tag - will enable users to tag other users whom they feel will find the post particularly interesting. 
 - The Topic Tag - enables users to tag posts with particular categories by simply entering the name of the category into the tag field. This enables the user to categorize their craic into genres of sub-craic, and search through these sub-genres accordingly. 
+- Further CSS styling will be implemented in future versions. 
 
 ## Technologies Used
 

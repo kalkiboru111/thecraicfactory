@@ -59,7 +59,7 @@ def view_cart(request):
             
             cart_total += product.price * quantity
     
-    return render(request, "cart2.html", {'cart_items': cart_items, 'cart_total': cart_total})
+    return render(request, "cart2.html", {'cart_items': cart_items, 'cart_total': cart_total, "post": post, "product": product})
 
 
 @login_required
