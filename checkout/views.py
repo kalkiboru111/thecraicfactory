@@ -13,8 +13,7 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
-def checkout(request, pk):
-    post = get_object_or_404(Post, pk=pk.id)
+def checkout(request):
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -26,12 +25,15 @@ def checkout(request, pk):
 
             cart = request.session.get('cart', {})
             total = 0
-            for id, quantity in cart.items():
-                product = get_object_or_404(Product, pk=id)
-                total += quantity * product.price
-                post.craic_count += quantity * product.price
-                post.save()
+            for product_id, post in cart.items():
+                product = get_object_or_404(Product, pk=product_id)
                 
+                for post, quantity in post.items():
+                    post = get_object_or_404(Post, pk=post.id)
+                    total += quantity * product.price
+                    post.craic_count += quantity * product.price
+                    post.save()
+                    
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
@@ -64,6 +66,6 @@ def checkout(request, pk):
         payment_form = MakePaymentForm()
         order_form = OrderForm()
     
-    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE, "post": post})
+    return render(request, "checkout.html", {"order_form": order_form, "payment_form": payment_form, "publishable": settings.STRIPE_PUBLISHABLE})
     
     
