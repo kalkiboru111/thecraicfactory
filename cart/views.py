@@ -65,14 +65,23 @@ def view_cart(request):
 @login_required
 def adjust_cart(request, id):
     cart = request.session.get('cart', {})
+    print(cart)
     quantity = int(request.POST.get('quantity'))
+    post = request.POST.get('post')
     
-    for product_id, post in cart.items():
-        for post, quantity in post.items():
+    if id in cart.keys():
+        if post in cart[id]:
             if quantity > 0:
-                cart[product_id][post] += quantity
+                cart[id][post] += quantity
             else:
-                cart[product_id][post] += 0
+                cart[id][post] += 0
+    
+    # for product_id, post in cart.items():
+    #     for post, quantity in post.items():
+    #         if quantity > 0:
+    #             cart[product_id][post] += quantity
+    #         else:
+    #             cart[product_id][post] += 0
     
     request.session['cart'] = cart
 

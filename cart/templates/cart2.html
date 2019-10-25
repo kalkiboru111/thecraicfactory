@@ -24,6 +24,7 @@
                         <div class="input-group">
                             <div class="input-group-addon">Qty</div>
                             <input name="quantity" type="number" min="0" max="999" class="form-control" required>
+                            <input type="hidden" name="post" value="{{ item.post }}">
                             <div class="input-group-addon">{{item.quantity}}</div>
                         </div>
                     </div>
