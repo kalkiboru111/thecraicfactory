@@ -29,7 +29,7 @@ def checkout(request):
                 product = get_object_or_404(Product, pk=product_id)
                 
                 for post, quantity in post.items():
-                    post = get_object_or_404(Post, pk=post.id)
+                    post = get_object_or_404(Post, pk=post)
                     total += quantity * product.price
                     post.craic_count += quantity * product.price
                     post.save()
