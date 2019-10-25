@@ -75,6 +75,7 @@ def adjust_cart(request, id):
                 cart[id][post] = quantity
             else:
                 cart[id][post] = 0
+                del cart[id][post]
     
     # for product_id, post in cart.items():
     #     for post, quantity in post.items():
