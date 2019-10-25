@@ -72,7 +72,7 @@ def adjust_cart(request, id):
     if id in cart.keys():
         if post in cart[id]:
             if quantity > 0:
-                cart[id][post] += quantity
+                cart[id][post] = quantity
             else:
                 cart[id][post] += 0
     
